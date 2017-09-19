@@ -23,6 +23,8 @@ public class TextGenerator {
 
         ClearCorpus();
 
+        if(!filePath.endsWith(".txt")) return;
+
         try {
             BufferedReader br = new BufferedReader(new FileReader(filePath));
             String line;
