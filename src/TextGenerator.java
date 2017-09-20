@@ -50,43 +50,49 @@ public class TextGenerator {
         corpus = new ArrayList<>();
     }
 
+    public String ConvertToString(ArrayList<String> stringList){
+        String outputString = "";
+        for(String str : stringList){
+            outputString.concat(str.concat(" "));
+        }
+        return outputString;
+    }
+
     public void setOutputStringLength(int stringLength){
         stringLength = this.stringLength;
     }
 
-    public void GenerateText(){
+    public String GenerateText(int stringLength){
+        ArrayList<String> outputStringList = new ArrayList<>();
+        ArrayList<String> possibleTransisions;
 
-        if(outputString.size() == 0){
-            // grab the first two from the corpus
-            // recurse
-            int randomNum = ThreadLocalRandom.current().nextInt(0, corpus.size() - 1);
-            outputString.add(corpus.get(randomNum));
-            outputString.add(corpus.get(randomNum + 1));
-            GenerateText();
-        }
-        else if(outputString.size() < stringLength){
-            // find every word that comes after our two words.
-            // look up first word, if our second word comes after it, grab the word that comes after that word.
-            ArrayList<String> setOfPossibleNextWords = new ArrayList<String>();
-            for(int i = 0; i < corpus.size() - 3; i++){    // IF WE GET INDEX OUT OF BOUNDS, ITS LIKELY CAUSED BY THIS LINE
-                if(corpus.get(i).equals(outputString.get(outputString.size() - 2))){
-                    if(corpus.get(i + 1).equals(outputString.get(outputString.size() - 1))){
-                        setOfPossibleNextWords.add((corpus.get(i + 2)));
+        if(!corpus.isEmpty()) {
+            if (stringLength >= 3) {
+                int randomIndex = ThreadLocalRandom.current().nextInt(0, corpus.size() - 1);
+                outputStringList.add(corpus.get(randomIndex));
+                outputStringList.add(corpus.get(randomIndex + 1));
+
+                while (outputStringList.size() < stringLength) {
+                    possibleTransisions = new ArrayList<>();
+                    for (int i = 0; i < corpus.size() - 3; i++) {
+                        if (corpus.get(i).equals(outputStringList.get(outputStringList.size() - 2))) {
+                            if (corpus.get(i + 1).equals(outputStringList.get(outputStringList.size() - 1))) {
+                                possibleTransisions.add(corpus.get(i + 2));
+                            }
+                        }
+                    }
+
+                    if (!possibleTransisions.isEmpty()) {
+                        randomIndex = ThreadLocalRandom.current().nextInt(0, possibleTransisions.size());
+                        outputStringList.add(possibleTransisions.get(randomIndex));
                     }
                 }
             }
-
-            if(setOfPossibleNextWords.size() > 0){
-                Random ran = new Random();
-                //int randomNum = 0 + (int)(Math.random() * setOfPossibleNextWords.size());
-                int randomNum = ThreadLocalRandom.current().nextInt(0, setOfPossibleNextWords.size());
-                outputString.add(setOfPossibleNextWords.get(randomNum));
-                GenerateText();
-            }
-        }else{
-            return;
         }
+
+        return ConvertToString(outputStringList);
     }
+
 
     public String getOutputString(){
         String finalString = new String();
