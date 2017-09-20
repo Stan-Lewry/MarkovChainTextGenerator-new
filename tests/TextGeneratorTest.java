@@ -117,6 +117,7 @@ public class TextGeneratorTest {
         String actualOutput = textGenerator.ConvertToString(methodInput);
 
         assertEquals(expectedOutput, actualOutput);
+        //assertTrue(actualOutput.equals(expectedOutput));
     }
 
     @Test
@@ -137,7 +138,6 @@ public class TextGeneratorTest {
         what is the maximum length? - what happens if we exceed that length
         also needs to be tested a whole bunch of times as this uses random values
      */
-
 
 
 

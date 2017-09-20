@@ -52,8 +52,13 @@ public class TextGenerator {
 
     public String ConvertToString(ArrayList<String> stringList){
         String outputString = "";
-        for(String str : stringList){
-            outputString.concat(str.concat(" "));
+
+        for(int i = 0; i < stringList.size(); i++){
+            outputString += stringList.get(i);
+
+            if(i < stringList.size() - 1){
+                outputString += " ";
+            }
         }
         return outputString;
     }
