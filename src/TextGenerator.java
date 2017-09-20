@@ -46,6 +46,7 @@ public class TextGenerator {
         }
     }
 
+
     public void ClearCorpus(){
         corpus = new ArrayList<>();
     }

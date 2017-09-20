@@ -1,4 +1,5 @@
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -171,27 +172,27 @@ public class TextGeneratorTest {
 
     @Test
     public void OutputStringShouldBeComprisedOfWordsFromTheCorpusDelimetedBySpaces(){
+        //textGenerator = new TextGenerator();
+
         textGenerator.BuildCorpus("Corpus01.txt");
 
-        int stringLength = 50;
-
         ArrayList<String> generatedWords = new ArrayList<>();
-        generatedWords.addAll(Arrays.asList(textGenerator.GenerateText(stringLength).split("\\s+")));
-        boolean wordFound = false;
-        for(String str1 : generatedWords){
+        generatedWords.addAll(Arrays.asList(textGenerator.GenerateText(10).split("\\s+")));
 
-            for(String str2 : textGenerator.getCorpus()){
-                if(str1.equals(str2)){
-                    wordFound = true;
-                    break;
-                }
-
-                if(wordFound) break;
+        boolean foundWord = true;
+        for(int i = 0; i < generatedWords.size(); i++){
+            foundWord = false;
+            int corpusIndex = 0;
+            while(!foundWord){
+                if(corpusIndex > textGenerator.getCorpus().size()) break;
+                if(generatedWords.get(i).equals(textGenerator.getCorpus().get(corpusIndex))) foundWord = true;
+                corpusIndex += 1;
             }
-
+            assertTrue(foundWord);
         }
-        assertTrue(wordFound);
     }
+
+
 
     @After
     public void tearDown() throws Exception {
