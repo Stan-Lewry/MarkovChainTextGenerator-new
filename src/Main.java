@@ -7,7 +7,10 @@ public class Main {
     //private TextGenerator textGenerator;
 
     public static void main(String [] args){
-        System.out.println("Hopeful ly my tests will run");
+
+        ApplicationWindow applicationWindow = new ApplicationWindow();
+
+        //1System.out.println("Hopeful ly my tests will run");
         /*
       TextGenerator textGenerator = new TextGenerator();
       textGenerator.BuildCorpus("testCorpus");
