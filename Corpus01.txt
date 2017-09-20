@@ -1,0 +1,12 @@
+Mac laptops (both) can only access certain, seemingly random files in PC share (but not others in same folder) even with admin accounts and the entire drive shared to "everyone" with full control. I cleared and re-set permissions for the documents folder to ensure it wasn't in an "inconsistent state" with some files missing permissions, but it did not fix the problem.
+Mac Pro will not allow any user to access its own documents folder, even locally logged on users.
+Mac Laptops appears to display old versions / cached copies of files when connected to the Mac Pro (customer insists date stamps for certain files are not current)
+Mac Laptops cannot access shares on the mac desktop, even with read/write permissions for "everyone" set.
+Mac Pro (desktop) cannot access windows PC share at all, even with the same credentials used on the laptops it gives invalid password errors.
+Mac laptops can see each other and work together fine.
+Mac Pro will sometimes connect to the Macbooks and be fine, but at random it refuses to work at all until file explorer windows (finder) are closed and reopened? (permission error)
+All machines are set to use the same workgroup, and can see each other.
+Customer does not want us to come out until we have a "for sure" solution as they have to leave work to be there for us.
+Customer refuses to bring PC in to shop and insists on an on-site fix (granted, in-shop work would surely prove ineffective for this problem)
+If all else fails, customer wants "at least" all the macs to interopeate properly without the pc.
+Customer wants us to be there friday if possible at a specific time that they will decide.

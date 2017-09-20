@@ -3,7 +3,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
+import static java.util.Arrays.asList;
 import static org.junit.Assert.*;
 
 /*
@@ -139,7 +141,57 @@ public class TextGeneratorTest {
         also needs to be tested a whole bunch of times as this uses random values
      */
 
+    @Test
+    public void GenerateTextShouldReturnEmptyStringForInputsLessThan3(){
+        textGenerator.BuildCorpus("Corpus01.txt");
 
+        String expectedOutput = "";
+        String actualOutput = textGenerator.GenerateText(1);
+        assertTrue(actualOutput.equals(expectedOutput));
+    }
+
+    @Test
+    public void GenerateTextShouldReturnEmptyIfCorpusIsNotInitialized(){
+        String expectedOutput = "";
+        String actualOutput = textGenerator.GenerateText(10);
+        assertTrue(actualOutput.equals(expectedOutput));
+    }
+
+    @Test
+    public void GenerateTextShouldReturnAStringOfEqualLengthToInputValue(){
+        textGenerator.BuildCorpus("Corpus01.txt");
+
+        int methodInput = 22;
+        String methodOutput = textGenerator.GenerateText(methodInput);
+
+        int outputLength = methodOutput.split("\\s+").length;
+
+        assertEquals(methodInput, outputLength);
+    }
+
+    @Test
+    public void OutputStringShouldBeComprisedOfWordsFromTheCorpusDelimetedBySpaces(){
+        textGenerator.BuildCorpus("Corpus01.txt");
+
+        int stringLength = 50;
+
+        ArrayList<String> generatedWords = new ArrayList<>();
+        generatedWords.addAll(Arrays.asList(textGenerator.GenerateText(stringLength).split("\\s+")));
+        boolean wordFound = false;
+        for(String str1 : generatedWords){
+
+            for(String str2 : textGenerator.getCorpus()){
+                if(str1.equals(str2)){
+                    wordFound = true;
+                    break;
+                }
+
+                if(wordFound) break;
+            }
+
+        }
+        assertTrue(wordFound);
+    }
 
     @After
     public void tearDown() throws Exception {
