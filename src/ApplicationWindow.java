@@ -1,8 +1,50 @@
 import javax.swing.*;
 import javax.xml.soap.Text;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static com.sun.glass.ui.Cursor.setVisible;
+
+public class ApplicationWindow extends JFrame {
+    private TextGenerator textGenerator;
+
+    public ApplicationWindow(){
+        setTitle("Markov Chain Text Generator");
+        initializeWindow();
+    }
+
+    public void initializeWindow(){
+
+        ImageIcon icon = createImageIcon("icon.png", "Icon");
+        JLabel titleLabel = new JLabel("Markov Chain Text Generator\nVersion 0", icon, JLabel.CENTER);
+        titleLabel.setVerticalTextPosition(JLabel.BOTTOM);
+        titleLabel.setHorizontalTextPosition(JLabel.CENTER);
+
+        add(titleLabel);
+
+
+
+        //setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setLayout(null);
+        setSize(400, 500);
+
+        setVisible(true);
+    }
+
+    private ImageIcon createImageIcon(String path, String description){
+        java.net.URL imgURL = getClass().getResource(path);
+        if(imgURL != null){
+            System.out.println("Loaded resource");
+            return new ImageIcon(imgURL, description);
+        }else{
+            System.out.println("Failed to load resource");
+            return null;
+        }
+    }
+}
+
+/*
 public class ApplicationWindow extends JFrame {
     JFrame frame;
     private TextGenerator textGenerator;
@@ -54,3 +96,4 @@ public class ApplicationWindow extends JFrame {
     }
 
 }
+*/

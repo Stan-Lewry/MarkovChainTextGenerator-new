@@ -17,6 +17,8 @@ public class TextGenerator {
 
     public void BuildCorpus(String filePath){
 
+        System.out.println("Building Corpus...");
+
         ClearCorpus();
 
         if(!filePath.endsWith(".txt")) return;

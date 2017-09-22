@@ -8,7 +8,15 @@ public class Main {
 
     public static void main(String [] args){
 
-        ApplicationWindow applicationWindow = new ApplicationWindow();
+        //ApplicationWindow applicationWindow = new ApplicationWindow();
+        //MainWindow mw = new MainWindow();
+
+
+        JFrame frame = new JFrame("Markov Chain Text Generator");
+        frame.setContentPane(new MainWindow().mainPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
 
         //1System.out.println("Hopeful ly my tests will run");
         /*
