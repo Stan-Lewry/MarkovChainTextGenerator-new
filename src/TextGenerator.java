@@ -133,7 +133,7 @@ public class TextGenerator {
                 outputStringList.add(corpus.get(randomIndex));
 
                 // continue until the desired length is surpassed and the string ends with a period
-                while(outputStringList.size() < stringLength && !outputStringList.get(outputStringList.size() - 1).endsWith(".")){
+                while(outputStringList.size() < stringLength){
                     possibleTransitions = new ArrayList<>();
                     for(int i = 0; i < corpus.size() - 2; i++){
                         if(corpus.get(i).equals(outputStringList.get(outputStringList.size() - 1))){
@@ -144,6 +144,18 @@ public class TextGenerator {
                     if(!possibleTransitions.isEmpty()){
                         randomIndex = ThreadLocalRandom.current().nextInt(0, possibleTransitions.size());
                         outputStringList.add(possibleTransitions.get(randomIndex));
+                    }
+                    else{  //if there are no possible transitions, grab another word from the corpus at random.
+                        if(outputStringList.get(outputStringList.size() - 1).endsWith("."))
+                            outputStringList.get(outputStringList.size()-1).concat(".");    // if the string so far doesnt end with a period, put one
+                        outputStringList.add(corpus.get(
+                                ThreadLocalRandom.current().nextInt(0, corpus.size() - 1)
+                        ));
+                    }
+
+                    // if we've reached the desired length but it still dosent end with a period, increase the length by one
+                    if(outputStringList.size() >= stringLength && !outputStringList.get(outputStringList.size() - 1).endsWith(".")){
+                        stringLength += 1;
                     }
                 }
             }
