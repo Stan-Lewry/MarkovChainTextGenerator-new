@@ -83,6 +83,13 @@ public class TextGenerator {
                         randomIndex = ThreadLocalRandom.current().nextInt(0, possibleTransitions.size());
                         outputStringList.add(possibleTransitions.get(randomIndex));
                     }
+                    else{  //if there are no possible transitions, grab another word from the corpus at random.
+                        if(outputStringList.get(outputStringList.size() - 1).endsWith("."))
+                            outputStringList.get(outputStringList.size()-1).concat(".");    // if the string so far doesnt end with a period, put one
+                        outputStringList.add(corpus.get(
+                                ThreadLocalRandom.current().nextInt(0, corpus.size() - 1)
+                        ));
+                    }
                 }
             }
         }
@@ -110,6 +117,13 @@ public class TextGenerator {
                     if(!possibleTransitions.isEmpty()){
                         randomIndex = ThreadLocalRandom.current().nextInt(0, possibleTransitions.size());
                         outputStringList.add(possibleTransitions.get(randomIndex));
+                    }
+                    else{  //if there are no possible transitions, grab another word from the corpus at random.
+                        if(outputStringList.get(outputStringList.size() - 1).endsWith("."))
+                            outputStringList.get(outputStringList.size()-1).concat(".");    // if the string so far doesnt end with a period, put one
+                        outputStringList.add(corpus.get(
+                                ThreadLocalRandom.current().nextInt(0, corpus.size() - 1)
+                        ));
                     }
                 }
                 outputStringList.get(outputStringList.size() - 1).concat(".");
@@ -187,6 +201,13 @@ public class TextGenerator {
                     if (!possibleTransisions.isEmpty()) {
                         randomIndex = ThreadLocalRandom.current().nextInt(0, possibleTransisions.size());
                         outputStringList.add(possibleTransisions.get(randomIndex));
+                    }
+                    else{  //if there are no possible transitions, grab another word from the corpus at random.
+                        if(outputStringList.get(outputStringList.size() - 1).endsWith("."))
+                            outputStringList.get(outputStringList.size()-1).concat(".");    // if the string so far doesnt end with a period, put one
+                        outputStringList.add(corpus.get(
+                                ThreadLocalRandom.current().nextInt(0, corpus.size() - 1)
+                        ));
                     }
                 }
             }
