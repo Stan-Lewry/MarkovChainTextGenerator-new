@@ -249,6 +249,19 @@ public class TextGeneratorTest {
         }
     }
 
+    /*
+    Testing criteria for ClearCorpus:
+        When a corpus has been built, calling this function should reset it to empty
+     */
+
+    @Test
+    public void ClearCorpusShouldResetTheCorpusToEmpty(){
+        textGenerator.BuildCorpus("Corpus01.txt");
+        textGenerator.ClearCorpus();
+
+        assertTrue(textGenerator.getCorpus().isEmpty());
+    }
+
     @After
     public void tearDown() throws Exception {
     }
