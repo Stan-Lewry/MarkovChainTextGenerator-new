@@ -1,12 +1,10 @@
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static java.util.Arrays.asList;
 import static org.junit.Assert.*;
 
 /*
@@ -132,8 +130,8 @@ public class TextGeneratorTest {
     }
 
     /*
-    It is more difficult to make assertions about the output behaviour of the GenerateText method as it makes use of RNG
-    Testing criteria for GenerateText method:
+    It is more difficult to make assertions about the output behaviour of the GenerateTextLargeCorpus method as it makes use of RNG
+    Testing criteria for GenerateTextLargeCorpus method:
         should return empty string if string length is less than 3
         should return empty string if corpus is not initialised
         should return a string of the length of given value
@@ -147,14 +145,14 @@ public class TextGeneratorTest {
         textGenerator.BuildCorpus("Corpus01.txt");
 
         String expectedOutput = "";
-        String actualOutput = textGenerator.GenerateText(1);
+        String actualOutput = textGenerator.GenerateTextLargeCorpus(1);
         assertTrue(actualOutput.equals(expectedOutput));
     }
 
     @Test
     public void GenerateTextShouldReturnEmptyIfCorpusIsNotInitialized(){
         String expectedOutput = "";
-        String actualOutput = textGenerator.GenerateText(10);
+        String actualOutput = textGenerator.GenerateTextLargeCorpus(10);
         assertTrue(actualOutput.equals(expectedOutput));
     }
 
@@ -163,7 +161,7 @@ public class TextGeneratorTest {
         textGenerator.BuildCorpus("Corpus01.txt");
 
         int methodInput = 22;
-        String methodOutput = textGenerator.GenerateText(methodInput);
+        String methodOutput = textGenerator.GenerateTextLargeCorpus(methodInput);
 
         int outputLength = methodOutput.split("\\s+").length;
 
@@ -177,7 +175,7 @@ public class TextGeneratorTest {
         textGenerator.BuildCorpus("Corpus01.txt");
 
         ArrayList<String> generatedWords = new ArrayList<>();
-        generatedWords.addAll(Arrays.asList(textGenerator.GenerateText(10).split("\\s+")));
+        generatedWords.addAll(Arrays.asList(textGenerator.GenerateTextLargeCorpus(10).split("\\s+")));
 
         boolean foundWord = true;
         for(int i = 0; i < generatedWords.size(); i++){

@@ -1,10 +1,6 @@
-import com.sun.org.apache.xalan.internal.xsltc.compiler.util.TestGenerator;
-import javafx.scene.control.Slider;
-
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -34,9 +30,11 @@ public class MainWindow {
     private JButton generateTextButton;
     private JTextPane textPane1;
     private JTextPane outputPane;
+    private JLabel headingLabel;
 
 
     public MainWindow() {
+
 
         textGenerator = new TextGenerator();
 
@@ -106,6 +104,13 @@ public class MainWindow {
             @Override
             public void actionPerformed(ActionEvent e) {
                 SetTechniqueMarkovChainInsertPeriod();
+            }
+        });
+
+        generateTextButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SelectGenerateTextButton();
             }
         });
     }
@@ -183,15 +188,51 @@ public class MainWindow {
                     switch(generationTechnique){
                         case TECHNIQUE_RANDOM:
                             //generate random text
+                            if(corpusMode == CorpusMode.CORPUSMODE_SMALL){
+                                outputPane.setText(
+                                        textGenerator.GenerateTextRandom(desiredOutputSize)
+                                );
+                            }else if(corpusMode == CorpusMode.CORPUSMODE_LARGE){
+                                outputPane.setText(
+                                        textGenerator.GenerateTextRandom(desiredOutputSize)
+                                );
+                            }
                             break;
                         case TECHNIQUE_MARKOV:
                             //markov technique
+                            if(corpusMode == CorpusMode.CORPUSMODE_SMALL){
+                                outputPane.setText(
+                                        textGenerator.GenerateTextSmallCorpus(desiredOutputSize)
+                                );
+                            }else if(corpusMode == CorpusMode.CORPUSMODE_LARGE){
+                                outputPane.setText(
+                                        textGenerator.GenerateTextLargeCorpus(desiredOutputSize)
+                                );
+                            }
                             break;
                         case TECHNIQUE_UNTILPERIOD:
                             // until period
+                            if(corpusMode == CorpusMode.CORPUSMODE_SMALL){
+                                outputPane.setText(
+                                        textGenerator.GenerateTextSmallCorpusUntilPeriod(desiredOutputSize)
+                                );
+                            }else if(corpusMode == CorpusMode.CORPUSMODE_LARGE){
+                                outputPane.setText(
+                                        textGenerator.GenerateTextLargeCorpusUntilPeriod(desiredOutputSize)
+                                );
+                            }
                             break;
                         case TECHNIQUE_INSERTPERIOD:
                             //insert period
+                            if(corpusMode == CorpusMode.CORPUSMODE_SMALL){
+                                outputPane.setText(
+                                        textGenerator.GenerateTextSmallCorpusInsertPeriod(desiredOutputSize)
+                                );
+                            }else if(corpusMode == CorpusMode.CORPUSMODE_LARGE){
+                                outputPane.setText(
+                                        textGenerator.GenerateTextLargeCorpusInsertPeriod(desiredOutputSize)
+                                );
+                            }
                             break;
                         default:
                             break;

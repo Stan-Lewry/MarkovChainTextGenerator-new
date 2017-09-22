@@ -26,7 +26,7 @@ public class Main {
 
       System.out.println("Attempting to Generate a string.... \n\n\n");
 
-      textGenerator.GenerateText();
+      textGenerator.GenerateTextLargeCorpus();
 
 
       System.out.println("Generated string:");

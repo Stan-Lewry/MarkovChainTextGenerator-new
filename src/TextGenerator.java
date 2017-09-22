@@ -62,6 +62,17 @@ public class TextGenerator {
         return outputString;
     }
 
+    public String GenerateTextRandom(int stringLength){
+        ArrayList<String> outputStringList = new ArrayList<>();
+
+        while(outputStringList.size() < stringLength){
+            outputStringList.add(
+              corpus.get(ThreadLocalRandom.current().nextInt(0, corpus.size()))
+            );
+        }
+
+        return ConvertToString(outputStringList);
+    }
 
     public String GenerateTextSmallCorpus(int stringLength){
 
@@ -128,7 +139,14 @@ public class TextGenerator {
                         ));
                     }
                 }
-                outputStringList.get(outputStringList.size() - 1).concat(".");
+                //outputStringList.get(outputStringList.size() - 1).concat(".");
+                if(!outputStringList.get(outputStringList.size() - 1).endsWith(".") ||
+                        !outputStringList.get(outputStringList.size() - 1).endsWith(",") ||
+                        !outputStringList.get(outputStringList.size() - 1).endsWith("?") ||
+                        !outputStringList.get(outputStringList.size() - 1).endsWith("!") ||
+                        !outputStringList.get(outputStringList.size() - 1).endsWith("-")){
+                    outputStringList.set(outputStringList.size() -1, outputStringList.get(outputStringList.size() - 1) + ".");
+                }
             }
         }
 
@@ -139,7 +157,7 @@ public class TextGenerator {
     // Will produce strings of a length at least as long as desired.
     // Strings produced this way will make more sense than strings with a period inserted at the end
     // This dosent work properly at the moment
-    public String GenerateTextSmallCorpusUntillPeriod(int stringLength){
+    public String GenerateTextSmallCorpusUntilPeriod(int stringLength){
         ArrayList<String> outputStringList = new ArrayList<>();
         ArrayList<String> possibleTransitions;
 
@@ -180,7 +198,7 @@ public class TextGenerator {
         return ConvertToString(outputStringList);
     }
 
-    public String GenerateText(int stringLength){
+    public String GenerateTextLargeCorpus(int stringLength){
         ArrayList<String> outputStringList = new ArrayList<>();
         ArrayList<String> possibleTransisions;
 
@@ -218,6 +236,94 @@ public class TextGenerator {
         return ConvertToString(outputStringList);
     }
 
+
+    public String GenerateTextLargeCorpusInsertPeriod(int stringLength){
+        ArrayList<String> outputStringList = new ArrayList<>();
+        ArrayList<String> possibleTransitions;
+
+        if(!corpus.isEmpty()){
+            if(stringLength >= 3){
+                int randomIndex = ThreadLocalRandom.current().nextInt(0, corpus.size() - 1);
+                outputStringList.add(corpus.get(randomIndex));
+                outputStringList.add(corpus.get(randomIndex + 1));
+
+                while(outputStringList.size() < stringLength){
+                    possibleTransitions = new ArrayList<>();
+                    for(int i = 0; i < corpus.size() - 3; i++){
+                        if(corpus.get(i).equals(outputStringList.get(outputStringList.size() - 2))){
+                            if(corpus.get(i + 1).equals(outputStringList.get(outputStringList.size() - 1))){
+                                possibleTransitions.add(corpus.get(i + 2));
+                            }
+                        }
+                    }
+
+                    if(!possibleTransitions.isEmpty()){
+                        randomIndex = ThreadLocalRandom.current().nextInt(0, possibleTransitions.size());
+                        outputStringList.add(possibleTransitions.get(randomIndex));
+                    }else{
+                        if(outputStringList.get(outputStringList.size() - 1).endsWith("."))
+                            outputStringList.get(outputStringList.size()-1).concat(".");    // if the string so far doesnt end with a period, put one
+                        outputStringList.add(corpus.get(
+                                ThreadLocalRandom.current().nextInt(0, corpus.size() - 1)
+                        ));
+                    }
+                }
+                //outputStringList.get(outputStringList.size() - 1).concat(".");
+                if(!outputStringList.get(outputStringList.size() - 1).endsWith(".") ||
+                        !outputStringList.get(outputStringList.size() - 1).endsWith(",") ||
+                        !outputStringList.get(outputStringList.size() - 1).endsWith("?") ||
+                        !outputStringList.get(outputStringList.size() - 1).endsWith("!") ||
+                        !outputStringList.get(outputStringList.size() - 1).endsWith("-")){
+                    outputStringList.set(outputStringList.size() -1, outputStringList.get(outputStringList.size() - 1) + ".");
+                }
+
+            }
+        }
+
+        return ConvertToString(outputStringList);
+    }
+
+    public String GenerateTextLargeCorpusUntilPeriod(int stringLength){
+        ArrayList<String> outputStringList = new ArrayList<>();
+        ArrayList<String> possibleTransisions;
+
+        if(!corpus.isEmpty()) {
+            if (stringLength >= 3) {
+                int randomIndex = ThreadLocalRandom.current().nextInt(0, corpus.size() - 1);
+                outputStringList.add(corpus.get(randomIndex));
+                outputStringList.add(corpus.get(randomIndex + 1));
+
+                while (outputStringList.size() < stringLength) {
+                    possibleTransisions = new ArrayList<>();
+                    for (int i = 0; i < corpus.size() - 3; i++) {
+                        if (corpus.get(i).equals(outputStringList.get(outputStringList.size() - 2))) {
+                            if (corpus.get(i + 1).equals(outputStringList.get(outputStringList.size() - 1))) {
+                                possibleTransisions.add(corpus.get(i + 2));
+                            }
+                        }
+                    }
+
+                    if (!possibleTransisions.isEmpty()) {
+                        randomIndex = ThreadLocalRandom.current().nextInt(0, possibleTransisions.size());
+                        outputStringList.add(possibleTransisions.get(randomIndex));
+                    }
+                    else{  //if there are no possible transitions, grab another word from the corpus at random.
+                        if(outputStringList.get(outputStringList.size() - 1).endsWith("."))
+                            outputStringList.get(outputStringList.size()-1).concat(".");    // if the string so far doesnt end with a period, put one
+                        outputStringList.add(corpus.get(
+                                ThreadLocalRandom.current().nextInt(0, corpus.size() - 1)
+                        ));
+                    }
+
+                    if(outputStringList.size() >= stringLength && !outputStringList.get(outputStringList.size() - 1).endsWith(".")){
+                        stringLength += 1;
+                    }
+                }
+            }
+        }
+
+        return ConvertToString(outputStringList);
+    }
 
     public ArrayList<String> getCorpus(){
         return corpus;
