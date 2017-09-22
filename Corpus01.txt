@@ -138,3 +138,74 @@ In the cases where the facility does not have a scheduling system, the MRP syste
 However, in complex settings it is not easy for an MRP system to do the detailed scheduling satisfactorily.
 
 ADV PU doesn't have that many Psychic-Types to play around with, but those who've thought they've found a metagame where Unown is usable can keep on searching. Unown is outclassed by Smoochum and Natu offensively and Drowzee defensively. With a barren movepool and horrendous base stats, Unown hits as hard as a wet noodle and falls at the drop a hat. Overall, Unown is a side-splitting, laugh out loud, no seriously who got fired for conceiving this, sorry excuse for a Pokemon. Maybe the opponent will feel sorry for you using it and just forfeit.
+
+"Put your feet off the dashboard," Nathanael says, and Anna only tells him, "I can't at the time." Three months prior, she would have pursed her lips and dropped both her glances and her feet. Nathanael can recognize this - he should be proud that she's got an ounce of protest in her, some semblance of fighting spirit or at least self-respect, and instead he's just kind of jealous. It pulls an acknowledgment of selfishness into his throat, and that's different from months ago, too. Nathanael thinks, not for the first time, that Anna Ananiassen is the most convoluted thing he ever could have found. He also thinks - this is newer, and definitely more terrible, worlds more crushing to whatever bit of his ego juts out against it - that she's a little frightening in how easily this overwhelmed thing overwhelms him. "Stop that," he says aloud, not about her feet. Nothing about her stops. He ought to be glad for it; when Anna defies the world, Nathanael felt like he's finally built a city. But when Anna defies him-- he wants to take everything down. Bulldozers to the brain. She's like smog sometimes, really white smog. She's also ruining his foundation.
+This is getting a little dramatic, even to him.
+Loads of people are afraid of mice. Nathanael Tualle is scared enough of Anna that he at least tries to keep his mouth from running. His fingers don't drum against the steering wheel. His expression does not twitch.
+--Well, it does, a little. His face is towards the road but he's *watching* her shoes shift against the top of the glove compartment. Time to put this particular mouse under heavy fire. "I can see up your skirt," he informs her casually. Not entirely true, but it's easy enough to deduce; her thighs are raised at an upwards angle and it makes dark cloth tumble back down to the seat.
+Oh.
+Anna's darkly flushed cheeks indicate her startled realization, and her grey eyes have gone all wide, and in that instant, Nathanael almost regrets saying it, because she's holding her notebook up against her face and he doesn't want her to smear the graphite on thin cardinal wings. It's still a useful tactic, he thinks. Her shoes will probably be safely down within a few seconds, now.
+They stare at each other and her feet stay in place. Yes, her calves are trembling just a little bit, but Anna Ananiassen displays unparalleled defiance right now, while she squeaks, "You can't!"
+"I can," Nathanael says calmly, not feeling calm.
+"You really can't!"
+Oh, Anna, don't--
+"Nathanael!" she nearly wails, and sounds like she'll start crying. He looks over to make sure she's not literally having a heart attack, and then he admits:
+"I really can't. Take your feet off the dashboard."
+Her shoes fall from the dash and her skirt's pulled down her thighs and she spends the better part of ten minutes just glaring skittishly over the edge of her notebook.
+Staring through the windshield, Nathanael reassures himself that he had no reason to peek anyway.
+
+Make sure RGBA matching is always present and disable shadows for RGBA windows by default if the user didn't specify an RGBA match.
+Reasoning for that is that shadows are desired for some RGBA windows (e.g. rectangular windows that just happen to have an RGBA colormap), while it's absolutely undesired for others (especially shaped ones) ... by enforcing no shadows for RGBA windows by default, we are flexible to user desires while still making sure we don't show ugliness by default
+
+You don't like my idea? :(
+You should do it
+I /should/
+If you want to add bittersweet
+but I just had an epiphany.
+They can drink and watch the sunset
+and Aya will quip that she's sad she won't be able to see him so much anymore
+But tries to make the best of the time they have
+but please, tell me your story
+
+""Hipster" is a term co-opted for use as a meaningless pejorative in order to vaguely call someone else's authenticity into question an, by extension, claim authenticity for yourself.
+It serves no conversational function and imparts no information, save for indicating the opinions and preferences of the speaker.
+Meanwhile, a market myth has sprung up around the term, as well as a cultural bogeyman consisting of elusive white 20-somethings who wear certain clothes (but no one will agree on what), listen to certain music (no one can agree on this either), and act a certain way (you've probably sensed the pattern on your own).
+Suffice it to say, no one self-identifies as a hipster; the term is always applied to an Other, to separate the authentic Us from the inauthentic, "ironic" Them.
+You can't define what "that kind of behavior or fashion or lifestyle" actually is, nor will you ever be able to. That's because you don't use "hipster" to describe an actual group of people, but to describe a fictional stereotype that is an outlet for literally anything that annoys you.
+The twist, of course, is that if it weren't for your own insecurities, nothing that a "hipster" could do or wear would ever affect you emotionally. But you are insecure about your own authenticity - "Do I wear what I wear because I want to? Do I listen to my music because I truly like it? I'm certainly not like those filthy hipsters!" - so you project those feelings onto others."
+
+oops joey is upset with me
+why
+i told him to delete the photos he's got saved of me
+and that made him mad
+because i still like them and you even though i shouldn't, and i've not bothered to delete them yet
+i was just about to say how good today had been but now i don't feel like it has been
+"you ruined my day by asking me to do this"
+unbelievable
+he comes back
+They're pictures of yourself, and if you don't want them on my hdd then you have the right to ask me to delete them
+But I don't want to. I still enjoy looking at them.
+bear in mind this is after we had agreed that he'd delete them if stuff like this happened
+it bothers me to no end that you're going to keep the pictures even though we agreed that you'd delete them, and that you decide to end everything except the part that you can get off to
+
+Add the rest of the operations
+Add dialogs for each operation type and provide a way to change the operation settings
+Add functionality for removing and backing up images after/before conversion
+Add functionality for changing the quality of exported images
+Implement a way to preview what a selected image will look like after manipulations are applied
+Finish "Settings" tab and save/load to/from Windows registry
+Add "special" dialogs for formats like PDF and MPEG
+Finish "Help" tab
+Change or remove the "Summary" tab
+Implement a static user key system to unlock the paid version of Pixelicht and save an encryped version in Windows registry
+Compile the splash screen and icons along with the Pixelicht executable
+Add automatic installation of Image Magick library on first run of Pixelicht
+Write the Pixelicht documentation
+
+I think the whole world has gone nuts. The Supreme Court sided with Walmart. I wonder how many pockets got full there?
+Another plant in Fort Smith is moving to Mexico so they can get cheap labor. Why aren’t the products cheaper when we buy them? I bought a TV a while back and had to hire a college professor to reprogram it. All I was getting were Spanish channels. I’ve have satellite with over 250 channels and nothing to watch. Pay TV is pay for commercials.
+Now the rest of the world, these goons say they don’t need God and states say gay marriage is okay. A person’s lifestyle is their business, but it’s sinful to live this way. A lady who claims to be a pastor married two women. First of all, she is no pastor. You’ve heard of three strikes and you’re out. She’s gay, strike one, a gay preacher, strike two, and marrying gay couples is strike three.
+Now every TV show has a gay person on it. I won’t watch such trash.
+Recently I bought bought 40 lbs. of corn for the deer. I got charged for 50 lbs. At least this has been corrected. I had my truck worked on. They said it would take four hours. Two and a half days later, it came home.
+Has anyone tried to hire a driver, caretaker or housekeeper lately? I talked to 30 people and hired one. That’s enough beefing for now.
+NORBERT GUNDERMAN, Solgohachia

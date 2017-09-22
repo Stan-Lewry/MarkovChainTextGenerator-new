@@ -1,4 +1,5 @@
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -13,7 +14,7 @@ public class TextGenerator {
     }
 
 
-    // This needs testing
+
     public void BuildCorpus(String filePath){
 
         ClearCorpus();
@@ -71,6 +72,68 @@ public class TextGenerator {
                 outputStringList.add(corpus.get(randomIndex));
 
                 while(outputStringList.size() < stringLength){
+                    possibleTransitions = new ArrayList<>();
+                    for(int i = 0; i < corpus.size() - 2; i++){
+                        if(corpus.get(i).equals(outputStringList.get(outputStringList.size() - 1))){
+                            possibleTransitions.add(corpus.get(i + 1));
+                        }
+                    }
+
+                    if(!possibleTransitions.isEmpty()){
+                        randomIndex = ThreadLocalRandom.current().nextInt(0, possibleTransitions.size());
+                        outputStringList.add(possibleTransitions.get(randomIndex));
+                    }
+                }
+            }
+        }
+
+        return ConvertToString(outputStringList);
+    }
+
+    public String GenerateTextSmallCorpusInsertPeriod(int stringLength){
+        ArrayList<String> outputStringList = new ArrayList<>();
+        ArrayList<String> possibleTransitions;
+
+        if(!corpus.isEmpty()){
+            if(stringLength >= 2){
+                int randomIndex = ThreadLocalRandom.current().nextInt(0, corpus.size() - 1);
+                outputStringList.add(corpus.get(randomIndex));
+
+                while(outputStringList.size() < stringLength){
+                    possibleTransitions = new ArrayList<>();
+                    for(int i = 0; i < corpus.size() - 2; i++){
+                        if(corpus.get(i).equals(outputStringList.get(outputStringList.size() - 1))){
+                            possibleTransitions.add(corpus.get(i + 1));
+                        }
+                    }
+
+                    if(!possibleTransitions.isEmpty()){
+                        randomIndex = ThreadLocalRandom.current().nextInt(0, possibleTransitions.size());
+                        outputStringList.add(possibleTransitions.get(randomIndex));
+                    }
+                }
+                outputStringList.get(outputStringList.size() - 1).concat(".");
+            }
+        }
+
+        return ConvertToString(outputStringList);
+    }
+
+    // This function will do the same as the others, except once it reaches the desired length it will continue until it finds a period/
+    // Will produce strings of a length at least as long as desired.
+    // Strings produced this way will make more sense than strings with a period inserted at the end
+    // This dosent work properly at the moment
+    public String GenerateTextSmallCorpusUntillPeriod(int stringLength){
+        ArrayList<String> outputStringList = new ArrayList<>();
+        ArrayList<String> possibleTransitions;
+
+        if(!corpus.isEmpty()){
+            if(stringLength >= 2){
+                int randomIndex = ThreadLocalRandom.current().nextInt(0, corpus.size() - 1);
+                outputStringList.add(corpus.get(randomIndex));
+
+                // continue until the desired length is surpassed and the string ends with a period
+                while(outputStringList.size() < stringLength && !outputStringList.get(outputStringList.size() - 1).endsWith(".")){
                     possibleTransitions = new ArrayList<>();
                     for(int i = 0; i < corpus.size() - 2; i++){
                         if(corpus.get(i).equals(outputStringList.get(outputStringList.size() - 1))){

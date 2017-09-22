@@ -36,7 +36,7 @@ public class ApplicationWindow extends JFrame {
 //                if((String generatedText = textGenerator.GenerateText(10)) != ""){
 //
 //                }
-                String generatedString = textGenerator.GenerateText(20);
+                String generatedString = textGenerator.GenerateTextSmallCorpusUntillPeriod(20);
                 if(generatedString.equals("")){
                     textArea.setText("Please select a corpus first");
                 }else{
