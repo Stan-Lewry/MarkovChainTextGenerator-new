@@ -6,15 +6,10 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class TextGenerator {
 
-    private ArrayList<String> outputString;
-    private int stringLength;
     private ArrayList<String> corpus;
 
     public TextGenerator(){
-        // Constructor, currently does nothing.
         corpus = new ArrayList<>();
-        outputString = new ArrayList<>();
-        stringLength = 10;
     }
 
 
@@ -64,8 +59,34 @@ public class TextGenerator {
         return outputString;
     }
 
-    public void setOutputStringLength(int stringLength){
-        stringLength = this.stringLength;
+
+    public String GenerateTextSmallCorpus(int stringLength){
+
+        ArrayList<String> outputStringList = new ArrayList<>();
+        ArrayList<String> possibleTransitions;
+
+        if(!corpus.isEmpty()){
+            if(stringLength >= 2){
+                int randomIndex = ThreadLocalRandom.current().nextInt(0, corpus.size() - 1);
+                outputStringList.add(corpus.get(randomIndex));
+
+                while(outputStringList.size() < stringLength){
+                    possibleTransitions = new ArrayList<>();
+                    for(int i = 0; i < corpus.size() - 2; i++){
+                        if(corpus.get(i).equals(outputStringList.get(outputStringList.size() - 1))){
+                            possibleTransitions.add(corpus.get(i + 1));
+                        }
+                    }
+
+                    if(!possibleTransitions.isEmpty()){
+                        randomIndex = ThreadLocalRandom.current().nextInt(0, possibleTransitions.size());
+                        outputStringList.add(possibleTransitions.get(randomIndex));
+                    }
+                }
+            }
+        }
+
+        return ConvertToString(outputStringList);
     }
 
     public String GenerateText(int stringLength){
@@ -99,22 +120,6 @@ public class TextGenerator {
         return ConvertToString(outputStringList);
     }
 
-
-    public String getOutputString(){
-        String finalString = new String();
-        for(String str : outputString){
-            finalString += str;
-            finalString += " ";
-        }
-        return  finalString;
-    }
-
-    public void PrintCorpus(){
-        System.out.println("Printing the contents of the current corpus...");
-        for(String line : corpus){
-            System.out.println(line);
-        }
-    }
 
     public ArrayList<String> getCorpus(){
         return corpus;

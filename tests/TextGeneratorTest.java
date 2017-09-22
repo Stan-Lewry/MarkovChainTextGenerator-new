@@ -192,7 +192,62 @@ public class TextGeneratorTest {
         }
     }
 
+    /*
+    Testing criteria for GenerateTextSmallCorpus
+        should return empty string if string length is less than 2
+        should return empty string if corpus is not initialised
+        should return a string of the length of given value
+        returned string should be comprised of individual words that exist in the corpus, delimited by spaces
+     */
+    @Test
+    public void GenerateTextSmallCorpusShouldReturnEmptyStringForInputsLessThan3(){
+        textGenerator.BuildCorpus("Corpus01.txt");
 
+        String expectedOutput = "";
+        String actualOutput = textGenerator.GenerateTextSmallCorpus(1);
+        assertTrue(actualOutput.equals(expectedOutput));
+    }
+
+    @Test
+    public void GenerateTextSmallCorpusShouldReturnEmptyIfCorpusIsNotInitialized(){
+        String expectedOutput = "";
+        String actualOutput = textGenerator.GenerateTextSmallCorpus(10);
+        assertTrue(actualOutput.equals(expectedOutput));
+    }
+
+    @Test
+    public void GenerateTextSmallCorpusShouldReturnAStringOfEqualLengthToInputValue(){
+        textGenerator.BuildCorpus("Corpus01.txt");
+
+        int methodInput = 22;
+        String methodOutput = textGenerator.GenerateTextSmallCorpus(methodInput);
+
+        int outputLength = methodOutput.split("\\s+").length;
+
+        assertEquals(methodInput, outputLength);
+    }
+
+    @Test
+    public void OutputStringShouldBeComprisedOfWordsFromTheCorpusDelimetedBySpacesSmallCorpus(){
+        //textGenerator = new TextGenerator();
+
+        textGenerator.BuildCorpus("Corpus01.txt");
+
+        ArrayList<String> generatedWords = new ArrayList<>();
+        generatedWords.addAll(Arrays.asList(textGenerator.GenerateTextSmallCorpus(10).split("\\s+")));
+
+        boolean foundWord = true;
+        for(int i = 0; i < generatedWords.size(); i++){
+            foundWord = false;
+            int corpusIndex = 0;
+            while(!foundWord){
+                if(corpusIndex > textGenerator.getCorpus().size()) break;
+                if(generatedWords.get(i).equals(textGenerator.getCorpus().get(corpusIndex))) foundWord = true;
+                corpusIndex += 1;
+            }
+            assertTrue(foundWord);
+        }
+    }
 
     @After
     public void tearDown() throws Exception {
